@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@iconify/react": "^4.0.1",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -41,6 +42,7 @@
     "eslint-plugin-storybook": "^0.6.7",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
+    "next-router-mock": "^0.8.0",
     "prettier": "^2.8.0"
   }
 }
