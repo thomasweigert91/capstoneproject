@@ -13,7 +13,7 @@ export default function Navigation() {
           title="Home"
         />
       </ActiveLink>
-      <ActiveLink href="/workout">
+      <ActiveLink href="/routines">
         <Icon
           icon="icon-park-outline:dumbbell"
           width="60"

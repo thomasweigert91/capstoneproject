@@ -1,7 +1,13 @@
 import Navigation from "../components/Navigation";
+import {ProfileHeader} from "../components/Profile/ProfileHeader";
 
 const profile = () => {
-  return <Navigation />;
+  return (
+    <>
+      <ProfileHeader />
+      <Navigation />
+    </>
+  );
 };
 
 export default profile;
