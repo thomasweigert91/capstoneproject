@@ -5,6 +5,7 @@ import {WorkoutHeader} from "../components/Routines/RoutinesHeader";
 const routines = () => {
   return (
     <>
+      <WorkoutHeader />
       <ExercisesHeader />
       <Navigation />;
     </>
