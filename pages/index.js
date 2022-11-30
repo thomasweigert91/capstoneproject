@@ -1,9 +1,12 @@
 import Navigation from "../components/Navigation";
+import {HomeHeader} from "../components/Home/HomeHeader";
+import HomeContainer from "../components/Home/HomeContainer";
 
 export default function Home() {
   return (
     <>
-      <h1>Workout App Home</h1>
+      <HomeHeader />
+      <HomeContainer />
       <Navigation />
     </>
   );
