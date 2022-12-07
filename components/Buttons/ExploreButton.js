@@ -33,7 +33,7 @@ const Button = styled.div`
 `;
 
 const ButtonText = styled.p`
-  padding-left: 10px;
+  padding-left: 0.8rem;
   font-size: 1.25rem;
   color: #211d29;
 `;

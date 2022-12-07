@@ -32,8 +32,6 @@ const ExploreContainer = () => {
         exerciseOptions
       );
 
-      console.log(bodyPart);
-
       const searchedExercises = exercisesData.filter(
         exercise =>
           exercise.name.toLowerCase().includes(search) ||
@@ -41,7 +39,6 @@ const ExploreContainer = () => {
           exercise.equipment.toLowerCase().includes(search) ||
           exercise.bodyPart.toLowerCase().includes(search)
       );
-      console.log(searchedExercises);
 
       setSearch("");
       setExercises(searchedExercises);
@@ -84,7 +81,6 @@ const ExploreContainer = () => {
 };
 
 const Container = styled.section`
-  width: 100%;
   height: 100%;
   padding: 2rem 0;
   background-color: #fcfbff;
