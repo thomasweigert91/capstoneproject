@@ -1,16 +1,34 @@
+import React from "react";
 import styled from "styled-components";
 import ExploreButton from "../Buttons/ExploreButton";
+import RoutinesCard from "./RoutinesCard";
+import {useState, useEffect} from "react";
 import NewRoutineButton from "../Buttons/NewRoutineButton";
 
 const RoutinesContainer = () => {
-  return (
-    <ButtonContainer>
-      <ExploreButton />
+  const [data, setData] = useState([]);
 
-      <NewRoutineButton />
-    </ButtonContainer>
+  useEffect(() => {
+    const retrievedData = JSON.parse(localStorage.getItem("workouts"));
+    setData(retrievedData);
+  }, []);
+
+  return (
+    <>
+      <ButtonContainer>
+        <ExploreButton />
+        <NewRoutineButton />
+      </ButtonContainer>
+      <CreatedRoutinesContainer>
+        {data.map((workout, index) => (
+          <RoutinesCard key={index} workout={workout} />
+        ))}
+      </CreatedRoutinesContainer>
+    </>
   );
 };
+
+export default RoutinesContainer;
 
 const ButtonContainer = styled.section`
   width: 100%;
@@ -21,4 +39,8 @@ const ButtonContainer = styled.section`
   justify-content: center;
 `;
 
-export default RoutinesContainer;
+const CreatedRoutinesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;

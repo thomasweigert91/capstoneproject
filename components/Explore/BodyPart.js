@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const BodyPart = ({item, setBodyPart, bodyPart}) => {
-  const isCurrentBodyPart = item === bodyPart;
+  const isCurrentBodyPart = bodyPart === item;
 
   return (
     <BodyPartCard

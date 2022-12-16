@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
+import Link from "next/link";
 
 const NewRoutineButton = () => {
   return (
@@ -11,7 +12,9 @@ const NewRoutineButton = () => {
         title="Home"
         color="735CDD"
       />
-      <ButtonText>CREATE</ButtonText>
+      <Link href="/create" style={{textDecoration: "none"}}>
+        <ButtonText>CREATE</ButtonText>
+      </Link>
     </Button>
   );
 };

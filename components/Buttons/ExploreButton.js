@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import Link from "next/link";
@@ -18,7 +19,6 @@ const ExploreButton = () => {
     </Button>
   );
 };
-
 const Button = styled.div`
   width: 15rem;
   border: 1px solid #8a878e;
