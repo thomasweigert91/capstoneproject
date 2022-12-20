@@ -2,7 +2,6 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import React from "react";
 import {Details} from "../../components/Exercises/Details";
-import {SimilarExercises} from "../../components/Exercises/SimilarExercises";
 import {exerciseOptions, fetchData} from "../../components/Utils/fetchData";
 import {ExerciseDetailsHeader} from "../../components/Exercises/ExerciseDetailsHeader";
 
@@ -28,7 +27,6 @@ const Exercise = () => {
     <>
       <ExerciseDetailsHeader />
       <Details exerciseDetail={exerciseDetail} />
-      <SimilarExercises />
     </>
   );
 };

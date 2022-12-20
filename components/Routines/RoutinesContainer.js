@@ -6,12 +6,24 @@ import {useState, useEffect} from "react";
 import NewRoutineButton from "../Buttons/NewRoutineButton";
 
 const RoutinesContainer = () => {
-  const [data, setData] = useState([]);
+  const [workouts, setWorkouts] = useState([]);
+
+  /*---------------------GET WORKOUTS OUT OF THE LS-------------------------*/
 
   useEffect(() => {
     const retrievedData = JSON.parse(localStorage.getItem("workouts"));
-    setData(retrievedData);
+    setWorkouts(retrievedData);
   }, []);
+
+  /*---------------------DELETE FUNCTION FOR ROUTINE CARDS-------------------------*/
+
+  function deleteWorkout(id) {
+    const updatedWorkouts = workouts.filter(workout => workout.id !== id);
+    setWorkouts(updatedWorkouts);
+    localStorage.setItem("workouts", JSON.stringify(updatedWorkouts));
+  }
+
+  /*---------------------RENDER-------------------------*/
 
   return (
     <>
@@ -20,8 +32,12 @@ const RoutinesContainer = () => {
         <NewRoutineButton />
       </ButtonContainer>
       <CreatedRoutinesContainer>
-        {data.map((workout, index) => (
-          <RoutinesCard key={index} workout={workout} />
+        {workouts.map((workout, index) => (
+          <RoutinesCard
+            key={index}
+            workout={workout}
+            deleteWorkout={deleteWorkout}
+          />
         ))}
       </CreatedRoutinesContainer>
     </>

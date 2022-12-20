@@ -25,14 +25,16 @@ export const CreateHeader = ({
         value={workoutName}
         onChange={handleWorkoutNameChange}
       ></RoutineName>
-      <SaveIcon
-        icon="material-symbols:save-outline"
-        width="35"
-        height="35"
-        color="735CDD"
-        title="Save"
-        onClick={() => handleSave(selectedExercises)}
-      />
+      <Link href="/routines">
+        <SaveIcon
+          icon="material-symbols:save-outline"
+          width="35"
+          height="35"
+          color="735CDD"
+          title="Save"
+          onClick={() => handleSave(selectedExercises)}
+        />
+      </Link>
     </HeaderContainer>
   );
 };

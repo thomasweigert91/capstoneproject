@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
-const CreateExerciseCard = ({exercise, onClick}) => {
+const CreateExerciseCard = ({exercise, toggleExercise, selectedExercises}) => {
   return (
-    <ExerciseCard onClick={onClick}>
+    <ExerciseCard
+      onClick={() => toggleExercise(exercise)}
+      style={{
+        backgroundColor: selectedExercises.includes(exercise)
+          ? "#C5BCF1"
+          : "#FCFBFF",
+      }}
+    >
       <ExerciseImage
         src={exercise.gifUrl}
         alt={exercise.name}
@@ -22,6 +29,7 @@ const ExerciseImage = styled.img``;
 const TagContainer = styled.div`
   display: flex;
   gap: 0.5rem;
+  margin-top: 1rem;
 `;
 
 const ExerciseName = styled.h3`

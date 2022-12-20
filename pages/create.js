@@ -30,9 +30,9 @@ const Create = () => {
       setSelectedExercises(selectedExercises.filter(e => e !== exercise));
     } else {
       setSelectedExercises([...selectedExercises, exercise]);
-      console.log(selectedExercises);
     }
   }
+  console.log(selectedExercises);
 
   return (
     <>
@@ -43,7 +43,6 @@ const Create = () => {
       />
       <CreateContainer
         selectedExercises={selectedExercises}
-        setSelectedExercises={setSelectedExercises}
         toggleExercise={toggleExercise}
       />
     </>

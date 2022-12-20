@@ -1,11 +1,20 @@
 import styled from "styled-components";
 import StartRoutineButton from "../Buttons/StartRoutineButton";
 import Link from "next/link";
+import {Icon} from "@iconify/react";
 
-const RoutinesCard = ({workout}) => {
+const RoutinesCard = ({workout, deleteWorkout}) => {
   return (
     <>
       <RoutinesCardContainer>
+        <DeleteIcon
+          icon="material-symbols:delete-forever-outline"
+          width="25"
+          height="25"
+          color="#D5000B"
+          title="Back"
+          onClick={() => deleteWorkout(workout.id)}
+        />
         <RoutineName>{workout.name}</RoutineName>
         <Link href={`/workouts/${workout.id}`}>
           <StartRoutineButton />
@@ -14,6 +23,12 @@ const RoutinesCard = ({workout}) => {
     </>
   );
 };
+
+const DeleteIcon = styled(Icon)`
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+`;
 
 const RoutinesCardContainer = styled.div`
   width: 20rem;
@@ -27,6 +42,7 @@ const RoutinesCardContainer = styled.div`
   padding: 1rem;
   margin: 1rem;
   border: 1.5px solid #c1bec7;
+  position: relative;
 `;
 
 const RoutineName = styled.h2`

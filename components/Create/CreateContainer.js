@@ -1,21 +1,21 @@
-import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import {useState, useEffect} from "react";
 import HorizontalScroll from "../Explore/HorizontalScroll";
 import CreateExercisesContainer from "./CreateExerciseContainer";
-
+import {Container} from "../../style/Create/createStyling";
+import {SearchContainer} from "../../style/Create/createStyling";
+import {SearchBar} from "../../style/Create/createStyling";
+import {SearchButton} from "../../style/Create/createStyling";
 import {exerciseOptions, fetchData} from "../Utils/fetchData";
 
-const CreateContainer = ({
-  selectedExercises,
-  setSelectedExercises,
-  toggleExercise,
-}) => {
+const CreateContainer = ({selectedExercises, toggleExercise}) => {
+  /*------------------------STATES----------------------------*/
   const [search, setSearch] = useState("");
   const [bodyParts, setBodyParts] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [bodyPart, setBodyPart] = useState("all");
 
+  /*------------------------FETCH BODYPART LIST-------------------------*/
   useEffect(() => {
     const fetchExercisesData = async () => {
       const bodyPartsData = await fetchData(
@@ -28,6 +28,8 @@ const CreateContainer = ({
 
     fetchExercisesData();
   }, []);
+
+  /*------------------------SEARCH FUNCTION-------------------------*/
 
   const handleSearch = async () => {
     if (search) {
@@ -48,6 +50,8 @@ const CreateContainer = ({
       setExercises(searchedExercises);
     }
   };
+
+  /*----------------------------RENDER-------------------------------*/
 
   return (
     <Container>
@@ -80,46 +84,10 @@ const CreateContainer = ({
         bodyPart={bodyPart}
         exercises={exercises}
         selectedExercises={selectedExercises}
-        setSelectedExercises={setSelectedExercises}
         toggleExercise={toggleExercise}
       />
     </Container>
   );
 };
-
-const Container = styled.section`
-  height: 100%;
-  padding: 2rem 0;
-  background-color: #fcfbff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-const SearchButton = styled.button`
-  width: 3rem;
-  height: 3rem;
-  border: none;
-  border-radius: 0 5px 5px 0;
-  background-color: #735cdd;
-  box-shadow: 0 0 15px #c1bec7;
-`;
-
-const SearchBar = styled.input`
-  height: 3rem;
-  width: 16rem;
-  border: none;
-  border-radius: 5px 0 0 5px;
-  background-color: #fcfbff;
-  color: #211d29;
-  text-align: center;
-  box-shadow: 0 0 15px #c1bec7;
-`;
 
 export default CreateContainer;

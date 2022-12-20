@@ -9,6 +9,7 @@ const CreateExercisesContainer = ({
   setExercises,
   bodyPart,
   toggleExercise,
+  selectedExercises,
 }) => {
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -32,13 +33,13 @@ const CreateExercisesContainer = ({
 
   return (
     <ExercisesContainer>
-      <ExercisesHeading>See results</ExercisesHeading>
       <ExercisesDiv>
         {exercises.map(exercise => (
           <CreateExerciseCard
             key={exercise.id}
             exercise={exercise}
-            onClick={() => toggleExercise(exercise)}
+            toggleExercise={toggleExercise}
+            selectedExercises={selectedExercises}
           />
         ))}
       </ExercisesDiv>
@@ -58,10 +59,6 @@ const ExercisesDiv = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
-
-const ExercisesHeading = styled.p`
-  font-size: 1rem;
 `;
 
 export default CreateExercisesContainer;
