@@ -6,31 +6,36 @@ import {useState} from "react";
 export const stateContext = createContext();
 
 function MyApp({Component, pageProps}) {
-  const [search, setSearch] = useState("");
-  const [bodyParts, setBodyParts] = useState([]);
-  const [exercises, setExercises] = useState([]);
-  const [bodyPart, setBodyPart] = useState("all");
+  const [lastWeight, setLastWeight] = useState("");
+  const [currentWeight, setCurrentWeight] = useState("");
+  const [reps, setReps] = useState("");
+
+  const handleLastWeightChange = event => {
+    setLastWeight(event.target.value);
+  };
+
+  const handleCurrentWeightChange = event => {
+    setCurrentWeight(event.target.value);
+  };
+
+  const handleRepsChange = event => {
+    setReps(event.target.value);
+  };
 
   return (
     <>
-      <stateContext.Provider
-        value={[
-          search,
-          setSearch,
-          bodyParts,
-          setBodyParts,
-          exercises,
-          setExercises,
-          bodyPart,
-          setBodyPart,
-        ]}
-      >
-        <Head>
-          <title>{Component.title}</title>
-        </Head>
-        <GlobalStyles />
-        <Component {...pageProps} />
-      </stateContext.Provider>
+      <Head>
+        <title>{Component.title}</title>
+      </Head>
+      <GlobalStyles />
+      <Component
+        {...pageProps}
+        currentWeight={currentWeight}
+        reps={reps}
+        lastWeight={lastWeight}
+        handleCurrentWeightChange={handleCurrentWeightChange}
+        handleRepsChange={handleRepsChange}
+      />
     </>
   );
 }

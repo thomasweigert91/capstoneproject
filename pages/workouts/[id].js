@@ -4,22 +4,35 @@ import WorkoutCard from "../../components/Workout/WorkoutCard";
 import {WorkoutHeader} from "../../components/Workout/WorkoutHeader";
 import styled from "styled-components";
 
-const Workout = () => {
+const Workout = ({
+  currentWeight,
+  reps,
+  lastWeight,
+  handleCurrentWeightChange,
+  handleRepsChange,
+}) => {
   const router = useRouter();
   const {id} = router.query;
-  console.log(id);
-
   const workouts = JSON.parse(localStorage.getItem("workouts"));
-
   const workout = workouts.find(workout => workout.id == id);
-  console.log(workouts);
-  console.log(workout);
+  const exercises = workout.exercises;
 
   return (
     <>
       <WorkoutHeader />
       <WorkoutContainer>
-        <WorkoutCard key={workout.id} workout={workout} />
+        {exercises.map(exercise => (
+          <WorkoutCard
+            key={exercise.id}
+            exercise={exercise}
+            workout={workout}
+            currentWeight={currentWeight}
+            reps={reps}
+            lastWeight={lastWeight}
+            handleCurrentWeightChange={handleCurrentWeightChange}
+            handleRepsChange={handleRepsChange}
+          />
+        ))}
       </WorkoutContainer>
     </>
   );

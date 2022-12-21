@@ -32,7 +32,7 @@ const TagContainer = styled.div`
   margin-top: 1rem;
 `;
 
-const ExerciseName = styled.h3`
+export const ExerciseName = styled.h3`
   margin-top: 1rem;
   padding: 0;
   color: #211d29;
