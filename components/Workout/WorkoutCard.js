@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import {AddSetButton} from "../Buttons/AddSetButton";
@@ -15,21 +14,51 @@ const WorkoutCard = ({
   handleCurrentWeightChange,
   handleLastWeight,
 }) => {
-  const [setCount, setSetCount] = useState(0);
+  const [exercises, setExercises] = useState(
+    localStorage.getItem("workout", JSON.stringify(workout.exercises))
+  );
 
   const [workoutSets, setWorkoutSets] = useState([]);
+  const [setId, setSetId] = useState(0);
+
   const handleAddSetButtonClick = () => {
-    setSetCount(workoutSets.length + 1);
-    setWorkoutSets([...workoutSets, <WorkoutSetComp key={workout.id} />]);
+    setSetId(setId + 1);
+    setWorkoutSets([...workoutSets, {id: setId, data: {}}]);
+  };
+
+  const handleSaveSetButtonClick = () => {
+    const updatedSets = workoutSets.map(set => {
+      if (set.id === setId) {
+        return {
+          ...set,
+          data: {
+            setId: setId,
+            lastWeight: lastWeight,
+            currentWeight: currentWeight,
+            reps: reps,
+          },
+        };
+      }
+      return set;
+    });
+
+    setWorkoutSets(updatedSets);
+
+    const updatedWorkout = {
+      ...workout,
+      sets: workoutSets,
+    };
+
+    localStorage.setItem("workout", JSON.stringify(updatedWorkout));
+    console.log(updatedWorkout);
+    console.log(updatedWorkout.sets);
   };
 
   return (
     <>
       <ExerciseCardHead>
         <ExerciseImage src={exercise.gifUrl} />
-        <ExerciseName href={`/exercise/${exercise.id}`}>
-          {exercise.name}
-        </ExerciseName>
+        <ExerciseName>{exercise.name}</ExerciseName>
       </ExerciseCardHead>
       <SetTableHeadContainer>
         <TrackingTableHeadText>Set</TrackingTableHeadText>
@@ -53,9 +82,12 @@ const WorkoutCard = ({
             lastWeight={lastWeight}
             handleCurrentWeightChange={handleCurrentWeightChange}
             handleLastWeight={handleLastWeight}
-            setCount={setCount}
+            handleSaveSetButtonClick={handleSaveSetButtonClick}
             workout={workout}
             exercise={exercise}
+            setId={setId}
+            workoutSets={workoutSets}
+            setWorkoutSets={setWorkoutSets}
           >
             {set}
           </WorkoutSetComp>
@@ -74,11 +106,12 @@ const ExerciseCardHead = styled.div`
   padding: 0 1rem;
 `;
 
-const ExerciseName = styled(Link)`
+const ExerciseName = styled.h3`
   color: #735cdd;
   font-size: 1.5rem;
   margin-left: 2rem;
   text-transform: capitalize;
+  text-decoration: none;
 `;
 
 const ExerciseImage = styled.img`

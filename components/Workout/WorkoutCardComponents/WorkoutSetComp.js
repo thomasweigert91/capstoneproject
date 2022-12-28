@@ -3,34 +3,15 @@ import {Icon} from "@iconify/react";
 import styled from "styled-components";
 
 export const WorkoutSetComp = ({
-  currentWeight,
-  reps,
-  lastWeight,
   handleCurrentWeightChange,
   handleRepsChange,
-  setCount,
-  workout,
+  handleSaveSetButtonClick,
+  setId,
 }) => {
-  const handleSaveSetButtonClick = () => {
-    workout.exercises.forEach(exercise => {
-      if (!exercise.sets) {
-        exercise.sets = [];
-      }
-      exercise.sets.push({
-        setCount: setCount,
-        lastWeight: lastWeight,
-        currentWeight: currentWeight,
-        reps: reps,
-      });
-    });
-    localStorage.setItem("workout", JSON.stringify(workout));
-    console.log(workout);
-  };
-
   return (
     <>
       <WorkoutSetCompContainer>
-        <WorkoutSetText>{setCount}</WorkoutSetText>
+        <WorkoutSetText>{setId}</WorkoutSetText>
         <WorkoutSetText>LAST</WorkoutSetText>
         <WorkoutSetText>
           <InputField

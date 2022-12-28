@@ -10,10 +10,6 @@ function MyApp({Component, pageProps}) {
   const [currentWeight, setCurrentWeight] = useState("");
   const [reps, setReps] = useState("");
 
-  const handleLastWeightChange = event => {
-    setLastWeight(event.target.value);
-  };
-
   const handleCurrentWeightChange = event => {
     setCurrentWeight(event.target.value);
   };
