@@ -22,7 +22,7 @@ const ButtonTextAccent = styled.p`
   font-size: 1.25rem;
   color: #fcfbff;
 `;
-const StartButton = styled.div`
+export const StartButton = styled.div`
   width: 15rem;
   border: 1px solid #8a878e;
   background-color: #735cdd;

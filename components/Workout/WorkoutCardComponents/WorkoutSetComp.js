@@ -1,17 +1,76 @@
 import React from "react";
 import {Icon} from "@iconify/react";
+import {useState} from "react";
 import styled from "styled-components";
+import {v4} from "uuid";
 
-export const WorkoutSetComp = ({
-  handleCurrentWeightChange,
-  handleRepsChange,
-  handleSaveSetButtonClick,
-  setId,
-}) => {
+export const WorkoutSetComp = ({set, exerciseIndex, setIndex, workout}) => {
+  const [currentWeight, setCurrentWeight] = useState(0);
+  const [reps, setReps] = useState(0);
+  const [savedSet, setSavedSet] = useState(false);
+
+  const handleCurrentWeightChange = event => {
+    setCurrentWeight(event.target.value);
+  };
+
+  const handleRepsChange = event => {
+    setReps(event.target.value);
+  };
+
+  function saveSet() {
+    let data = JSON.parse(localStorage.getItem("workout")) ?? workout;
+    const newSet = {
+      id: v4(),
+      weight: currentWeight,
+      reps: reps,
+    };
+
+    if (data.exercises[exerciseIndex].sets?.some(item => item.id === set.id)) {
+      data = {
+        ...data,
+        exercises: data.exercises.map((exercise, index) => {
+          if (index === exerciseIndex) {
+            return {
+              ...exercise,
+              sets: exercise.sets.map(item => {
+                if (item.id === set.id) {
+                  return {...item, weight: currentWeight, reps: reps};
+                } else {
+                  return item;
+                }
+              }),
+            };
+          } else {
+            return exercise;
+          }
+        }),
+      };
+    } else {
+      data = {
+        ...data,
+        exercises: data.exercises.map((exercise, index) => {
+          if (index === exerciseIndex) {
+            return {
+              ...exercise,
+              sets: [...(data.exercises[exerciseIndex].sets || []), newSet],
+            };
+          } else {
+            return exercise;
+          }
+        }),
+      };
+    }
+
+    localStorage.setItem("workout", JSON.stringify(data));
+    setSavedSet(!savedSet);
+  }
+
   return (
     <>
-      <WorkoutSetCompContainer>
-        <WorkoutSetText>{setId}</WorkoutSetText>
+      <WorkoutSetCompContainer
+        style={{backgroundColor: savedSet ? "#AAFFC5" : "#FCFBFF"}}
+      >
+        <WorkoutSetText>{setIndex + 1}</WorkoutSetText>
         <WorkoutSetText>LAST</WorkoutSetText>
         <WorkoutSetText>
           <InputField
@@ -32,8 +91,8 @@ export const WorkoutSetComp = ({
           width="36"
           height="36"
           title="Checkbox"
-          color="#8A878E"
-          onClick={handleSaveSetButtonClick}
+          color={savedSet ? "#09D148" : "#8A878E"}
+          onClick={saveSet}
         />
       </WorkoutSetCompContainer>
     </>
@@ -45,7 +104,7 @@ const WorkoutSetCompContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 0.7rem;
-  height: 1.5rem;
+  height: 2rem;
   width: 100%;
   margin: 0.5rem;
 `;
@@ -55,6 +114,8 @@ const InputField = styled.input`
   height: 1.75rem;
   margin: 0;
   text-align: center;
+  border: none;
+  background-color: transparent;
 `;
 
 const WorkoutSetText = styled.p`
