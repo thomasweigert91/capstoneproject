@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import DoneWorkout from "../Home/DoneWorkout/DoneWorkout";
+import {useState} from "react";
 
 const ProfileContainer = () => {
-  const workouts = JSON.parse(localStorage.getItem("doneworkouts"));
+  const [workouts, setWorkouts] = useState([]);
+
+  useEffect(() => {
+    setWorkouts(JSON.parse(localStorage?.getItem("doneworkouts")));
+  }, []);
+
   const workoutsCount = workouts.length;
 
   return (

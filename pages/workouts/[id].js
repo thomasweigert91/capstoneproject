@@ -1,4 +1,4 @@
-import React from "react";
+import React, {use} from "react";
 import {useRouter} from "next/router";
 import WorkoutCard from "../../components/Workout/WorkoutCard";
 import {WorkoutHeader} from "../../components/Workout/WorkoutHeader";
@@ -15,9 +15,13 @@ const Workout = ({
 }) => {
   const router = useRouter();
   const {id} = router.query;
+  const [workouts, setWorkouts] = useState([]);
 
-  const workouts = JSON.parse(localStorage.getItem("workouts"));
-  const workout = workouts.find(workout => workout.id == id);
+  useEffect(() => {
+    setWorkouts(JSON.parse(localStorage.getItem("workouts")));
+  }, []);
+
+  const workout = workouts?.find(workout => workout.id == id);
   const [exercises, setExercises] = useState(
     JSON.parse(localStorage.getItem("workout"))?.exercises ?? workout.exercises
   );
@@ -40,7 +44,7 @@ const Workout = ({
     .padStart(2, "0")}:${elapsedSeconds.toString().padStart(2, "0")}`;
 
   function calculateTotalVolumeAndSetState() {
-    const sets = workout.exercises[0].sets;
+    const sets = workout?.exercises[0].sets;
     const newTotalVolume = calculateTotalVolume(sets);
     setTotalVolume(newTotalVolume);
     console.log(totalVolume);

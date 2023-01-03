@@ -1,8 +1,14 @@
+import {useEffect} from "react";
 import styled from "styled-components";
 import DoneWorkout from "./DoneWorkout/DoneWorkout";
+import {useState} from "react";
 
 export const HomeContainer = () => {
-  const doneWorkouts = JSON.parse(localStorage.getItem("doneworkouts"));
+  const [doneWorkouts, setDoneWorkouts] = useState([]);
+
+  useEffect(() => {
+    setDoneWorkouts(JSON.parse(localStorage.getItem("doneworkouts")));
+  }, []);
 
   return (
     <Container>
