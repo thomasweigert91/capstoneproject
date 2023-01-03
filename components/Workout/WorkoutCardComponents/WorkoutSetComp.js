@@ -4,17 +4,25 @@ import {useState} from "react";
 import styled from "styled-components";
 import {v4} from "uuid";
 
-export const WorkoutSetComp = ({set, exerciseIndex, setIndex, workout}) => {
+export const WorkoutSetComp = ({
+  set,
+  exerciseIndex,
+  setIndex,
+  workout,
+  calculateTotalVolumeAndSetState,
+}) => {
   const [currentWeight, setCurrentWeight] = useState(0);
   const [reps, setReps] = useState(0);
   const [savedSet, setSavedSet] = useState(false);
 
   const handleCurrentWeightChange = event => {
     setCurrentWeight(event.target.value);
+    calculateTotalVolumeAndSetState();
   };
 
   const handleRepsChange = event => {
     setReps(event.target.value);
+    calculateTotalVolumeAndSetState();
   };
 
   function saveSet() {

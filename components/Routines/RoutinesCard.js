@@ -16,7 +16,7 @@ const RoutinesCard = ({workout, deleteWorkout}) => {
           onClick={() => deleteWorkout(workout.id)}
         />
         <RoutineName>{workout.name}</RoutineName>
-        <Link href={`/workouts/${workout.id}`}>
+        <Link href={`/workouts/${workout.id}`} style={{textDecoration: "none"}}>
           <StartRoutineButton />
         </Link>
       </RoutinesCardContainer>

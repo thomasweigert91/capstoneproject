@@ -3,7 +3,7 @@ import {Icon} from "@iconify/react";
 import Link from "next/link";
 import {v4} from "uuid";
 
-export const WorkoutHeader = ({workout}) => {
+export const WorkoutHeader = ({workout, elapsedTime}) => {
   const handleCancelWorkoutButtonClick = () => {
     if (localStorage.getItem("workout")) {
       localStorage.removeItem("workout");
@@ -16,6 +16,7 @@ export const WorkoutHeader = ({workout}) => {
       const savedWorkout = {
         name: currentWorkout.name,
         id: v4(),
+        time: elapsedTime,
         exercises: currentWorkout.exercises,
       };
       let doneWorkouts = JSON.parse(localStorage.getItem("doneworkouts")) || [];

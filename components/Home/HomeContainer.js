@@ -6,7 +6,7 @@ export const HomeContainer = () => {
 
   return (
     <Container>
-      {doneWorkouts.map(doneworkout => (
+      {doneWorkouts?.map(doneworkout => (
         <DoneWorkout key={doneworkout.id} doneworkout={doneworkout} />
       ))}
     </Container>

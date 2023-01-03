@@ -8,9 +8,11 @@ const DoneWorkout = ({doneworkout}) => {
       <DoneWorkoutStatsContainer>
         <StatsContainer>
           <StatsCaption>Time</StatsCaption>
+          {doneworkout.time}
         </StatsContainer>
         <StatsContainer>
           <StatsCaption>Volume</StatsCaption>
+          12344
         </StatsContainer>
       </DoneWorkoutStatsContainer>
       <MoreDetailsButton>Show more details</MoreDetailsButton>
@@ -50,6 +52,9 @@ const DoneWorkoutStatsContainer = styled.div`
 
 const StatsContainer = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 const StatsCaption = styled.p`

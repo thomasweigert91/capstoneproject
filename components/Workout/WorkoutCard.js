@@ -13,6 +13,7 @@ const WorkoutCard = ({
   exerciseIndex,
   setExercises,
   exercises,
+  calculateTotalVolumeAndSetState,
 }) => {
   function addSet() {
     let data = exercises;
@@ -69,6 +70,7 @@ const WorkoutCard = ({
             exerciseIndex={exerciseIndex}
             setIndex={index}
             workout={workout}
+            calculateTotalVolumeAndSetState={calculateTotalVolumeAndSetState}
           />
         ))}
         <ButtonContainer>

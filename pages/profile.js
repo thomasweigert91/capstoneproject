@@ -1,13 +1,15 @@
 import Navigation from "../components/Navigation";
 import {ProfileHeader} from "../components/Profile/ProfileHeader";
+import ProfileContainer from "../components/Profile/ProfileContainer";
 
-const profile = () => {
+const Profile = () => {
   return (
     <>
       <ProfileHeader />
+      <ProfileContainer />
       <Navigation />
     </>
   );
 };
 
-export default profile;
+export default Profile;
