@@ -8,24 +8,19 @@ import {Icon} from "@iconify/react";
 import useLocalStorage from "../../components/Utils/useLocalStorage";
 
 const Workout = () => {
-  // ----------------------------------
-  // singleWorkout contains the current workout
-  // ----------------------------------
   const [singleWorkout, setSingleWorkout] = useLocalStorage("workout", []);
+  /*const [exercises, setExercises] = useState(
+    JSON.parse(localStorage.getItem("workout")).exercises
+  );*/
 
-  // ----------------------------------
-  // exercises contains the exercises of the current workout
-  // ----------------------------------
   const [exercises, setExercises] = useState([]);
+
   useEffect(() => {
     if (singleWorkout.exercises) {
       setExercises(singleWorkout.exercises);
     }
   }, [singleWorkout]);
 
-  // ----------------------------------
-  // Timer function
-  // ----------------------------------
   const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
@@ -42,7 +37,7 @@ const Workout = () => {
   const elapsedTimeString = `${elapsedMinutes
     .toString()
     .padStart(2, "0")}:${elapsedSeconds.toString().padStart(2, "0")}`;
-  // ----------------------------------
+
   return (
     <>
       <WorkoutHeader workout={singleWorkout} elapsedTime={elapsedTimeString} />

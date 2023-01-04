@@ -5,7 +5,8 @@ import {Icon} from "@iconify/react";
 import useLocalStorage from "../Utils/useLocalStorage";
 
 const RoutinesCard = ({workout, deleteWorkout}) => {
-  const [setSingleWorkout] = useLocalStorage("workout", []);
+  const [singleWorkout, setSingleWorkout] = useLocalStorage("workout", []);
+  console.log(singleWorkout);
   return (
     <>
       <RoutinesCardContainer>
