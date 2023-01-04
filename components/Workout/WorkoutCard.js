@@ -12,7 +12,6 @@ const WorkoutCard = ({
   exerciseIndex,
   setExercises,
   exercises,
-  calculateTotalVolumeAndSetState,
 }) => {
   function addSet() {
     let data = exercises;

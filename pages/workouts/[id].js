@@ -14,9 +14,6 @@ const Workout = ({
   handleCurrentWeightChange,
   handleRepsChange,
 }) => {
-  const router = useRouter();
-  const {id} = router.query;
-
   const [singleWorkout, setSingleWorkout] = useLocalStorage("workout", []);
   const [exercises, setExercises] = useState(
     JSON.parse(localStorage.getItem("workout")).exercises

@@ -3,10 +3,10 @@ import {Icon} from "@iconify/react";
 import {useState} from "react";
 import styled from "styled-components";
 import {v4} from "uuid";
-import {useEffect} from "react";
+
 import useLocalStorage from "../../Utils/useLocalStorage";
 
-export const WorkoutSetComp = ({set, exerciseIndex, setIndex, workout}) => {
+export const WorkoutSetComp = ({set, exerciseIndex, setIndex}) => {
   const [currentWeight, setCurrentWeight] = useState(0);
   const [reps, setReps] = useState(0);
   const [savedSet, setSavedSet] = useState(false);
@@ -19,13 +19,6 @@ export const WorkoutSetComp = ({set, exerciseIndex, setIndex, workout}) => {
   const handleRepsChange = event => {
     setReps(event.target.value);
   };
-
-  /*useEffect(() => {
-    if (singleWorkout) {
-      setData(singleWorkout);
-    }
-  }, [singleWorkout]);*/
-  console.log(currentWeight, reps);
 
   function saveSet() {
     let data = singleWorkout;

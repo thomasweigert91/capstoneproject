@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import DoneWorkout from "../Home/DoneWorkout/DoneWorkout";
 import {useState} from "react";
+import StatsButton from "../Buttons/ProfileButtons/StatsButton";
 
 const ProfileContainer = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -11,7 +12,7 @@ const ProfileContainer = () => {
     setWorkouts(JSON.parse(localStorage?.getItem("doneworkouts")));
   }, []);
 
-  const workoutsCount = workouts.length;
+  const workoutsCount = workouts?.length;
 
   return (
     <>
@@ -29,7 +30,14 @@ const ProfileContainer = () => {
           <div>Done Workouts: {workoutsCount}</div>
         </PersonalContainer>
         <StatsContainer>Stats</StatsContainer>
-        <DashboardContainer>Dashboard</DashboardContainer>
+        <Dashboard>
+          <DashboardContainer>
+            <StatsButton />
+            <StatsButton />
+            <StatsButton />
+            <StatsButton />
+          </DashboardContainer>
+        </Dashboard>
         <DoneWorkoutsContainer>
           {workouts?.map(doneworkout => (
             <DoneWorkout key={doneworkout.id} doneworkout={doneworkout} />
@@ -61,9 +69,17 @@ const StatsContainer = styled.div`
   border-bottom: 1px solid #c1bec7;
 `;
 
-const DashboardContainer = styled.div`
-  border-bottom: 1px solid #c1bec7;
+const Dashboard = styled.section`
   height: 10rem;
+  border-bottom: 1px solid #c1bec7;
+`;
+
+const DashboardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 0.5rem;
+  align-items: center;
 `;
 
 const DoneWorkoutsContainer = styled.div`
