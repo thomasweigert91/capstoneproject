@@ -2,10 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import ExploreButton from "../Buttons/ExploreButton";
 import RoutinesCard from "./RoutinesCard";
-import {useEffect} from "react";
 import NewRoutineButton from "../Buttons/NewRoutineButton";
 import useLocalStorage from "../Utils/useLocalStorage";
-
 const RoutinesContainer = () => {
   const [workouts, setWorkouts] = useLocalStorage("workouts", []);
 
