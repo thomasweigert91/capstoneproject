@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import {AddSetButton} from "../Buttons/AddSetButton";
-import {DeleteSetButton} from "../Buttons/DeleteSetButton";
 
 import {WorkoutSetComp} from "./WorkoutCardComponents/WorkoutSetComp";
 import {v4} from "uuid";
@@ -35,14 +34,6 @@ const WorkoutCard = ({
     setExercises(data);
   }
 
-  function deleteLastSet() {
-    if (exercises[exerciseIndex].sets.length > 0) {
-      const data = exercises;
-      data[exerciseIndex].sets.pop();
-      setExercises(data);
-    }
-  }
-
   return (
     <>
       <ExerciseCardHead>
@@ -69,13 +60,12 @@ const WorkoutCard = ({
             set={set}
             exerciseIndex={exerciseIndex}
             setIndex={index}
+            exercise={exercise}
             workout={workout}
-            calculateTotalVolumeAndSetState={calculateTotalVolumeAndSetState}
           />
         ))}
         <ButtonContainer>
           <AddSetButton onClick={() => addSet()} />
-          <DeleteSetButton onClick={deleteLastSet} />
         </ButtonContainer>
       </SetContainer>
     </>

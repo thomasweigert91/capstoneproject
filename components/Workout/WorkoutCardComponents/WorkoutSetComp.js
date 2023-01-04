@@ -3,30 +3,33 @@ import {Icon} from "@iconify/react";
 import {useState} from "react";
 import styled from "styled-components";
 import {v4} from "uuid";
+import {useEffect} from "react";
+import useLocalStorage from "../../Utils/useLocalStorage";
 
-export const WorkoutSetComp = ({
-  set,
-  exerciseIndex,
-  setIndex,
-  workout,
-  calculateTotalVolumeAndSetState,
-}) => {
+export const WorkoutSetComp = ({set, exerciseIndex, setIndex, workout}) => {
   const [currentWeight, setCurrentWeight] = useState(0);
   const [reps, setReps] = useState(0);
   const [savedSet, setSavedSet] = useState(false);
+  const [singleWorkout, setSingleWorkout] = useLocalStorage("workout", []);
 
   const handleCurrentWeightChange = event => {
     setCurrentWeight(event.target.value);
-    calculateTotalVolumeAndSetState();
   };
 
   const handleRepsChange = event => {
     setReps(event.target.value);
-    calculateTotalVolumeAndSetState();
   };
 
+  /*useEffect(() => {
+    if (singleWorkout) {
+      setData(singleWorkout);
+    }
+  }, [singleWorkout]);*/
+  console.log(currentWeight, reps);
+
   function saveSet() {
-    let data = JSON.parse(localStorage.getItem("workout")) ?? workout;
+    let data = singleWorkout;
+    console.log(data);
     const newSet = {
       id: v4(),
       weight: currentWeight,

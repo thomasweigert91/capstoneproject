@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import ExploreButton from "../Buttons/ExploreButton";
 import RoutinesCard from "./RoutinesCard";
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 import NewRoutineButton from "../Buttons/NewRoutineButton";
+import useLocalStorage from "../Utils/useLocalStorage";
 
 const RoutinesContainer = () => {
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useLocalStorage("workouts", []);
 
   /*---------------------GET WORKOUTS OUT OF THE LS-------------------------*/
 
@@ -15,12 +16,16 @@ const RoutinesContainer = () => {
     setWorkouts(retrievedData);
   }, []);
 
+  function setWorkoutInLocalStorage(id) {
+    const workout = workouts.find(w => w.id === id);
+    localStorage.setItem("workout", JSON.stringify(workout));
+  }
+
   /*---------------------DELETE FUNCTION FOR ROUTINE CARDS-------------------------*/
 
   function deleteWorkout(id) {
     const updatedWorkouts = workouts.filter(workout => workout.id !== id);
     setWorkouts(updatedWorkouts);
-    localStorage.setItem("workouts", JSON.stringify(updatedWorkouts));
   }
 
   /*---------------------RENDER-------------------------*/
@@ -37,6 +42,7 @@ const RoutinesContainer = () => {
             key={index}
             workout={workout}
             deleteWorkout={deleteWorkout}
+            setWorkoutInLocalStorage={setWorkoutInLocalStorage}
           />
         ))}
       </CreatedRoutinesContainer>

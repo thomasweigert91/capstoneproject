@@ -2,8 +2,10 @@ import styled from "styled-components";
 import StartRoutineButton from "../Buttons/StartRoutineButton";
 import Link from "next/link";
 import {Icon} from "@iconify/react";
+import useLocalStorage from "../Utils/useLocalStorage";
 
 const RoutinesCard = ({workout, deleteWorkout}) => {
+  const [singleWorkout, setSingleWorkout] = useLocalStorage("workout", []);
   return (
     <>
       <RoutinesCardContainer>
@@ -16,7 +18,11 @@ const RoutinesCard = ({workout, deleteWorkout}) => {
           onClick={() => deleteWorkout(workout.id)}
         />
         <RoutineName>{workout.name}</RoutineName>
-        <Link href={`/workouts/${workout.id}`} style={{textDecoration: "none"}}>
+        <Link
+          href={`/workouts/${workout.id}`}
+          style={{textDecoration: "none"}}
+          onClick={() => setSingleWorkout(workout)}
+        >
           <StartRoutineButton />
         </Link>
       </RoutinesCardContainer>

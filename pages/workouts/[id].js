@@ -5,6 +5,7 @@ import {WorkoutHeader} from "../../components/Workout/WorkoutHeader";
 import styled from "styled-components";
 import {useState, useEffect} from "react";
 import {Icon} from "@iconify/react";
+import useLocalStorage from "../../components/Utils/useLocalStorage";
 
 const Workout = ({
   currentWeight,
@@ -15,17 +16,16 @@ const Workout = ({
 }) => {
   const router = useRouter();
   const {id} = router.query;
-  const [workouts, setWorkouts] = useState([]);
 
-  useEffect(() => {
-    setWorkouts(JSON.parse(localStorage.getItem("workouts")));
-  }, []);
-
-  const workout = workouts?.find(workout => workout.id == id);
+  const [singleWorkout, setSingleWorkout] = useLocalStorage("workout", []);
   const [exercises, setExercises] = useState(
-    JSON.parse(localStorage.getItem("workout"))?.exercises ?? workout.exercises
+    JSON.parse(localStorage.getItem("workout")).exercises
   );
-  const [totalVolume, setTotalVolume] = useState(0);
+
+  console.log(exercises);
+
+  // setExercises({...singleWorkout, exercises:[...exercises, newExercise]})
+
   const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
@@ -43,20 +43,9 @@ const Workout = ({
     .toString()
     .padStart(2, "0")}:${elapsedSeconds.toString().padStart(2, "0")}`;
 
-  function calculateTotalVolumeAndSetState() {
-    const sets = workout?.exercises[0].sets;
-    const newTotalVolume = calculateTotalVolume(sets);
-    setTotalVolume(newTotalVolume);
-    console.log(totalVolume);
-  }
-  function calculateTotalVolume(sets) {
-    return sets?.reduce((total, set) => {
-      return total + set.weight * set.reps;
-    }, 0);
-  }
   return (
     <>
-      <WorkoutHeader workout={workout} elapsedTime={elapsedTimeString} />
+      <WorkoutHeader workout={singleWorkout} elapsedTime={elapsedTimeString} />
 
       <WorkoutContainer>
         <StatsContainer>
@@ -78,7 +67,7 @@ const Workout = ({
               title="Home"
               color="735CDD"
             />
-            {totalVolume}
+            Volume
           </StatsSubContainer>
         </StatsContainer>
 
@@ -86,7 +75,7 @@ const Workout = ({
           <WorkoutCard
             key={exercise.id}
             exercise={exercise}
-            workout={workout}
+            workout={singleWorkout}
             currentWeight={currentWeight}
             reps={reps}
             exerciseIndex={index}
@@ -95,7 +84,8 @@ const Workout = ({
             handleRepsChange={handleRepsChange}
             setExercises={setExercises}
             exercises={exercises}
-            calculateTotalVolumeAndSetState={calculateTotalVolumeAndSetState}
+            singleWorkout={singleWorkout}
+            setSingleWorkout={setSingleWorkout}
           />
         ))}
       </WorkoutContainer>
