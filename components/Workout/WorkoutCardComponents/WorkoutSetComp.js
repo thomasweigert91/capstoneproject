@@ -20,6 +20,7 @@ export const WorkoutSetComp = ({set, exerciseIndex, setIndex}) => {
     setReps(event.target.value);
   };
 
+  console.log(setSingleWorkout);
   function saveSet() {
     let data = singleWorkout;
     console.log(data);
