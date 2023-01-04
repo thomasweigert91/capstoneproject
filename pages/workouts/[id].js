@@ -1,5 +1,4 @@
 import React from "react";
-import {useRouter} from "next/router";
 import WorkoutCard from "../../components/Workout/WorkoutCard";
 import {WorkoutHeader} from "../../components/Workout/WorkoutHeader";
 import styled from "styled-components";

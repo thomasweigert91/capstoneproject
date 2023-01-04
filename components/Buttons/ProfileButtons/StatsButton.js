@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import BasicProfileButton from "./BasicProfileButton";
 import {Icon} from "@iconify/react";
 
