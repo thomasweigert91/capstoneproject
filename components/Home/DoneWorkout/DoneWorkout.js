@@ -12,7 +12,7 @@ const DoneWorkout = ({doneworkout}) => {
         </StatsContainer>
         <StatsContainer>
           <StatsCaption>Volume</StatsCaption>
-          12344
+          totalWeight
         </StatsContainer>
       </DoneWorkoutStatsContainer>
       <MoreDetailsButton>Show more details</MoreDetailsButton>
@@ -24,20 +24,19 @@ const DoneWorkoutCard = styled.div`
   width: 80%;
   background-color: #fcfbff;
   border: 1px solid #8a878e;
-  height: 13rem;
+
   border-radius: 5px;
   margin-top: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
+  padding: 1rem 0;
 `;
 
 const DoneWorkoutName = styled.h3`
   font-size: 2rem;
   margin: 0;
-  position: absolute;
   top: 1rem;
 `;
 
@@ -46,7 +45,6 @@ const DoneWorkoutStatsContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 20rem;
-  position: absolute;
   top: 3.5rem;
 `;
 
@@ -62,9 +60,9 @@ const StatsCaption = styled.p`
 `;
 
 const MoreDetailsButton = styled.div`
-  position: absolute;
   bottom: 1rem;
   background-color: #735cdd;
+  margin-top: 2rem;
   padding: 0.75rem;
   border-radius: 5px;
   color: #fcfbff;

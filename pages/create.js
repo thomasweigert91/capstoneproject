@@ -1,13 +1,12 @@
 import {CreateHeader} from "../components/Create/CreateHeader";
 import CreateContainer from "../components/Create/CreateContainer";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import useLocalStorage from "../components/Utils/useLocalStorage";
 
 const Create = () => {
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [workoutName, setWorkoutName] = useState("");
-  const [workouts, setWorkouts] = useState(() => {
-    return JSON.parse(localStorage.getItem("workouts")) ?? [];
-  });
+  const [workouts, setWorkouts] = useLocalStorage("workouts", []);
 
   function handleSave() {
     const workout = {
@@ -17,9 +16,6 @@ const Create = () => {
     };
     setWorkouts([...workouts, workout]);
   }
-  useEffect(() => {
-    localStorage.setItem("workouts", JSON.stringify(workouts));
-  }, [workouts]);
 
   function handleWorkoutNameChange(event) {
     setWorkoutName(event.target.value);

@@ -2,7 +2,6 @@ import React from "react";
 import {Icon} from "@iconify/react";
 import {useState} from "react";
 import styled from "styled-components";
-import {v4} from "uuid";
 
 import useLocalStorage from "../../Utils/useLocalStorage";
 
@@ -20,12 +19,11 @@ export const WorkoutSetComp = ({set, exerciseIndex, setIndex}) => {
     setReps(event.target.value);
   };
 
-  console.log(setSingleWorkout);
   function saveSet() {
     let data = singleWorkout;
-    console.log(data);
+
     const newSet = {
-      id: v4(),
+      id: set.id,
       weight: currentWeight,
       reps: reps,
     };
@@ -66,7 +64,7 @@ export const WorkoutSetComp = ({set, exerciseIndex, setIndex}) => {
       };
     }
 
-    localStorage.setItem("workout", JSON.stringify(data));
+    setSingleWorkout(data);
     setSavedSet(!savedSet);
   }
 
@@ -97,7 +95,7 @@ export const WorkoutSetComp = ({set, exerciseIndex, setIndex}) => {
           height="36"
           title="Checkbox"
           color={savedSet ? "#09D148" : "#8A878E"}
-          onClick={saveSet}
+          onClick={() => saveSet()}
         />
       </WorkoutSetCompContainer>
     </>

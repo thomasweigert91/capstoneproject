@@ -11,11 +11,6 @@ const RoutinesContainer = () => {
 
   /*---------------------GET WORKOUTS OUT OF THE LS-------------------------*/
 
-  useEffect(() => {
-    const retrievedData = JSON.parse(localStorage.getItem("workouts"));
-    setWorkouts(retrievedData);
-  }, []);
-
   function setWorkoutInLocalStorage(id) {
     const workout = workouts.find(w => w.id === id);
     localStorage.setItem("workout", JSON.stringify(workout));
@@ -37,7 +32,7 @@ const RoutinesContainer = () => {
         <NewRoutineButton />
       </ButtonContainer>
       <CreatedRoutinesContainer>
-        {workouts.map((workout, index) => (
+        {workouts?.map((workout, index) => (
           <RoutinesCard
             key={index}
             workout={workout}
