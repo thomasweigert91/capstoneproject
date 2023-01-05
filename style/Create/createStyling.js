@@ -7,6 +7,7 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 4.5rem;
 `;
 
 export const SearchContainer = styled.div`
