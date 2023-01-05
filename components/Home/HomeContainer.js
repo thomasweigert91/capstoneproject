@@ -6,14 +6,16 @@ import {useState} from "react";
 export const HomeContainer = () => {
   const [doneWorkouts, setDoneWorkouts] = useState([]);
 
+
   useEffect(() => {
     setDoneWorkouts(JSON.parse(localStorage.getItem("doneworkouts")));
   }, []);
 
+
   return (
     <Container>
       {doneWorkouts?.map(doneworkout => (
-        <DoneWorkout key={doneworkout.id} doneworkout={doneworkout} />
+        <DoneWorkout key={doneworkout.id} doneworkout={doneworkout}  />
       ))}
     </Container>
   );

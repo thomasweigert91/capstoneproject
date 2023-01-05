@@ -1,8 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const DoneWorkout = ({doneworkout}) => {
+const [totalWeight, setTotalWeight] = useState(0)
+
+
+function calculateTotalWeight() {
+  let totalWeight = 0;
+
+  doneworkout.exercises.forEach(exercise => {
+    exercise.sets.forEach(set => {
+      totalWeight += set.weight * set.reps;
+    });
+  });
+
+  return totalWeight;
+}
+
+useEffect(()=> {
+  setTotalWeight(calculateTotalWeight())
+}, [totalWeight])
+
+
+
   return (
     <DoneWorkoutCard>
       <DoneWorkoutName>{doneworkout.name}</DoneWorkoutName>
@@ -13,7 +36,7 @@ const DoneWorkout = ({doneworkout}) => {
         </StatsContainer>
         <StatsContainer>
           <StatsCaption>Volume</StatsCaption>
-          totalWeight
+          {totalWeight} kg
         </StatsContainer>
       </DoneWorkoutStatsContainer>
       <Link
