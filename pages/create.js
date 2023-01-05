@@ -33,7 +33,7 @@ const Create = () => {
   return (
     <>
       <CreateHeader
-        onSave={handleSave}
+        handleSave={handleSave}
         selectedExercises={selectedExercises}
         handleWorkoutNameChange={handleWorkoutNameChange}
       />
