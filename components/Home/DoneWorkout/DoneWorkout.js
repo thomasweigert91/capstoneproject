@@ -17,7 +17,7 @@ const DoneWorkout = ({doneworkout}) => {
         </StatsContainer>
       </DoneWorkoutStatsContainer>
       <Link
-        href={`/doneworkouts/${doneworkout.id}`}
+        href={`/doneworkout/${doneworkout.id}`}
         style={{textDecoration: "none"}}
       >
         <MoreDetailsButton>Show more details</MoreDetailsButton>

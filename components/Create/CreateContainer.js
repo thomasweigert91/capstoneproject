@@ -18,12 +18,15 @@ const CreateContainer = ({selectedExercises, toggleExercise}) => {
   /*------------------------FETCH BODYPART LIST-------------------------*/
   useEffect(() => {
     const fetchExercisesData = async () => {
-      const bodyPartsData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-        exerciseOptions
-      );
-
-      setBodyParts(["all", ...bodyPartsData]);
+      try {
+        const bodyPartsData = await fetchData(
+          "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
+          exerciseOptions
+        );
+        setBodyParts(["all", ...bodyPartsData]);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchExercisesData();

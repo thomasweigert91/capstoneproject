@@ -13,13 +13,18 @@ const Exercise = () => {
 
   useEffect(() => {
     const fetchExercisesData = async () => {
-      const exerciseDbUrl = "https://exercisedb.p.rapidapi.com";
-      const exerciseDetailData = await fetchData(
-        `${exerciseDbUrl}/exercises/exercise/${id}`,
-        exerciseOptions
-      );
-      setExerciseDetail(exerciseDetailData);
+      try {
+        const exerciseDbUrl = "https://exercisedb.p.rapidapi.com";
+        const exerciseDetailData = await fetchData(
+          `${exerciseDbUrl}/exercises/exercise/${id}`,
+          exerciseOptions
+        );
+        setExerciseDetail(exerciseDetailData);
+      } catch (error) {
+        console.error(error);
+      }
     };
+
     fetchExercisesData();
   }, [id]);
 

@@ -9,9 +9,6 @@ import useLocalStorage from "../../components/Utils/useLocalStorage";
 
 const Workout = () => {
   const [singleWorkout, setSingleWorkout] = useLocalStorage("workout", []);
-  /*const [exercises, setExercises] = useState(
-    JSON.parse(localStorage.getItem("workout")).exercises
-  );*/
 
   const [exercises, setExercises] = useState([]);
 

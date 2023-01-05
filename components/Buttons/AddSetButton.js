@@ -4,18 +4,16 @@ import {Icon} from "@iconify/react";
 
 export const AddSetButton = ({onClick}) => {
   return (
-    <>
-      <AddButton onClick={onClick}>
-        <Icon
-          icon="material-symbols:add"
-          width="25"
-          height="25"
-          title="Workout"
-          color="#735cdd"
-        />
-        Add Set
-      </AddButton>
-    </>
+    <AddButton onClick={onClick}>
+      <Icon
+        icon="material-symbols:add"
+        width="25"
+        height="25"
+        title="Workout"
+        color="#735cdd"
+      />
+      Add Set
+    </AddButton>
   );
 };
 

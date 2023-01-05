@@ -12,7 +12,7 @@ const HeaderContainer = styled.section`
   width: 100%;
   background-color: #fcfbff;
   height: 4.5rem;
-  position: absolute;
+  position: fixed;
   box-shadow: 0px 0px 10px #463f3a;
   top: 0;
   display: flex;
@@ -20,7 +20,7 @@ const HeaderContainer = styled.section`
   justify-content: space-around;
 `;
 
-const SiteTitle = styled.h2`
+export const SiteTitle = styled.h2`
   color: #8a878e;
   font-weight: 400;
   font-size: 1.25rem;
