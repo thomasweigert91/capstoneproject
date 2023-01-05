@@ -4,7 +4,10 @@ import {Icon} from "@iconify/react";
 import DoneWorkout from "../Home/DoneWorkout/DoneWorkout";
 import {useState} from "react";
 import StatsButton from "../Buttons/ProfileButtons/StatsButton";
-
+import ExerciseButton from "../Buttons/ProfileButtons/ExerciseButton"
+import MeasurmentsButton from "../Buttons/ProfileButtons/MeasurmentsButton";
+import CalenderButton from "../Buttons/ProfileButtons/CalenderButton";
+import Link from "next/link";
 const ProfileContainer = () => {
   const [workouts, setWorkouts] = useState([]);
 
@@ -33,9 +36,11 @@ const ProfileContainer = () => {
         <Dashboard>
           <DashboardContainer>
             <StatsButton />
-            <StatsButton />
-            <StatsButton />
-            <StatsButton />
+            <Link href={"/explore"} style={{textDecoration: "none"}}>
+            <ExerciseButton />
+            </Link>
+            <MeasurmentsButton />
+            <CalenderButton />
           </DashboardContainer>
         </Dashboard>
         <DoneWorkoutsContainer>
@@ -80,6 +85,8 @@ const DashboardContainer = styled.div`
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 0.5rem;
   align-items: center;
+  justify-content: center;
+  padding: 1rem;
 `;
 
 const DoneWorkoutsContainer = styled.div`
