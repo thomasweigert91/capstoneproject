@@ -34,7 +34,7 @@ const DoneWorkout = () => {
         <SiteTitle>{selectedWorkout?.name}</SiteTitle>
       </HeaderContainer>
       <BodyContainer>
-        {selectedWorkout?.exercises?.map((exercise, id) => (
+        {selectedWorkout?.exercises?.map(exercise => (
           <DoneWokoutCard key={exercise.id} exercise={exercise} />
         ))}
       </BodyContainer>
