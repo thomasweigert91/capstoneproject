@@ -1,19 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import {useState} from "react";
+import {useEffect} from "react";
 
 const DoneWorkout = ({doneworkout}) => {
+  const [totalWeight, setTotalWeight] = useState(0);
+
+  function calculateTotalWeight() {
+    let totalWeight = 0;
+
+    doneworkout.exercises.forEach(exercise => {
+      exercise.sets.forEach(set => {
+        totalWeight += set.weight * set.reps;
+      });
+    });
+
+    return totalWeight;
+  }
+
+  useEffect(() => {
+    setTotalWeight(calculateTotalWeight());
+  }, [totalWeight]);
+
   return (
     <DoneWorkoutCard>
       <DoneWorkoutName>{doneworkout.name}</DoneWorkoutName>
       <DoneWorkoutStatsContainer>
         <StatsContainer>
           <StatsCaption>Time</StatsCaption>
-          {doneworkout.time}
+          <StatsText>{doneworkout.time}</StatsText>
         </StatsContainer>
         <StatsContainer>
           <StatsCaption>Volume</StatsCaption>
-          totalWeight
+          <StatsText>{totalWeight} kg</StatsText>
         </StatsContainer>
       </DoneWorkoutStatsContainer>
       <Link
@@ -62,6 +82,15 @@ const StatsContainer = styled.div`
 
 const StatsCaption = styled.p`
   color: #8a878e;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+`;
+
+const StatsText = styled.p`
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0;
+  color: #211d29;
 `;
 
 const MoreDetailsButton = styled.div`
