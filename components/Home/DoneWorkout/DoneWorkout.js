@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 const DoneWorkout = ({doneworkout}) => {
   return (
@@ -15,7 +16,12 @@ const DoneWorkout = ({doneworkout}) => {
           totalWeight
         </StatsContainer>
       </DoneWorkoutStatsContainer>
-      <MoreDetailsButton>Show more details</MoreDetailsButton>
+      <Link
+        href={`/doneworkouts/${doneworkout.id}`}
+        style={{textDecoration: "none"}}
+      >
+        <MoreDetailsButton>Show more details</MoreDetailsButton>
+      </Link>
     </DoneWorkoutCard>
   );
 };
@@ -24,7 +30,6 @@ const DoneWorkoutCard = styled.div`
   width: 80%;
   background-color: #fcfbff;
   border: 1px solid #8a878e;
-
   border-radius: 5px;
   margin-top: 1.5rem;
   display: flex;
