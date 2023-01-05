@@ -14,13 +14,10 @@ const DoneWorkout = () => {
   const [doneWorkouts] = useLocalStorage("doneworkouts", []);
   const [selectedWorkout, setSelectedWorkout] = useState({});
 
-
   useEffect(() => {
     const workout = doneWorkouts?.find(workout => workout.id === id);
     setSelectedWorkout(workout);
   }, [id, doneWorkouts]);
-
-
 
   return (
     <>
@@ -38,7 +35,7 @@ const DoneWorkout = () => {
       </HeaderContainer>
       <BodyContainer>
         {selectedWorkout?.exercises?.map(exercise => (
-          <DoneWokoutCard key={exercise.id} exercise={exercise}  />
+          <DoneWokoutCard key={exercise.id} exercise={exercise} />
         ))}
       </BodyContainer>
     </>

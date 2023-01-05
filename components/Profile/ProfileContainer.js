@@ -4,7 +4,7 @@ import {Icon} from "@iconify/react";
 import DoneWorkout from "../Home/DoneWorkout/DoneWorkout";
 import {useState} from "react";
 import StatsButton from "../Buttons/ProfileButtons/StatsButton";
-import ExerciseButton from "../Buttons/ProfileButtons/ExerciseButton"
+import ExerciseButton from "../Buttons/ProfileButtons/ExerciseButton";
 import MeasurmentsButton from "../Buttons/ProfileButtons/MeasurmentsButton";
 import CalenderButton from "../Buttons/ProfileButtons/CalenderButton";
 import Link from "next/link";
@@ -37,7 +37,7 @@ const ProfileContainer = () => {
           <DashboardContainer>
             <StatsButton />
             <Link href={"/explore"} style={{textDecoration: "none"}}>
-            <ExerciseButton />
+              <ExerciseButton />
             </Link>
             <MeasurmentsButton />
             <CalenderButton />
