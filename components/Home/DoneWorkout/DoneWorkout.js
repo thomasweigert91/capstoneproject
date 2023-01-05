@@ -29,11 +29,11 @@ const DoneWorkout = ({doneworkout}) => {
       <DoneWorkoutStatsContainer>
         <StatsContainer>
           <StatsCaption>Time</StatsCaption>
-          {doneworkout.time}
+          <StatsText>{doneworkout.time}</StatsText>
         </StatsContainer>
         <StatsContainer>
           <StatsCaption>Volume</StatsCaption>
-          {totalWeight} kg
+          <StatsText>{totalWeight} kg</StatsText>
         </StatsContainer>
       </DoneWorkoutStatsContainer>
       <Link
@@ -82,6 +82,15 @@ const StatsContainer = styled.div`
 
 const StatsCaption = styled.p`
   color: #8a878e;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+`;
+
+const StatsText = styled.p`
+font-size: 1.25rem;
+font-weight: 600;
+margin-top: 0;
+color: #211D29;
 `;
 
 const MoreDetailsButton = styled.div`
