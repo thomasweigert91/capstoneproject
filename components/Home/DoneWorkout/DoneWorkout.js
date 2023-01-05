@@ -87,10 +87,10 @@ const StatsCaption = styled.p`
 `;
 
 const StatsText = styled.p`
-font-size: 1.25rem;
-font-weight: 600;
-margin-top: 0;
-color: #211D29;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0;
+  color: #211d29;
 `;
 
 const MoreDetailsButton = styled.div`
