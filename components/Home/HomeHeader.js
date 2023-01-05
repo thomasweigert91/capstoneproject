@@ -8,11 +8,11 @@ export const HomeHeader = () => {
   );
 };
 
-const HeaderContainer = styled.section`
+export const HeaderContainer = styled.section`
   width: 100%;
   background-color: #fcfbff;
   height: 4.5rem;
-  position: absolute;
+  position: fixed;
   box-shadow: 0px 0px 10px #463f3a;
   top: 0;
   display: flex;

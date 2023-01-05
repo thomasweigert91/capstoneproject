@@ -1,15 +1,14 @@
 import Navigation from "../components/Navigation";
 import RoutinesContainer from "../components/Routines/RoutinesContainer";
 import {WorkoutHeader} from "../components/Routines/RoutinesHeader";
-
-const routines = () => {
+const Routines = () => {
   return (
     <>
       <WorkoutHeader />
       <RoutinesContainer />
-      <Navigation />;
+      <Navigation />
     </>
   );
 };
 
-export default routines;
+export default Routines;

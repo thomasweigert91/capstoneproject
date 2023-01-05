@@ -32,10 +32,11 @@ const NavigationContainer = styled.nav`
   width: 100%;
   background-color: #fcfbff;
   height: 5rem;
-  position: absolute;
+  position: fixed;
   box-shadow: 0px 0px 10px #463f3a;
   bottom: 0;
   display: flex;
+  z-index: 5;
   align-items: center;
   justify-content: space-around;
 `;
