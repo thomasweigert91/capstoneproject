@@ -8,7 +8,7 @@ export const HomeHeader = () => {
   );
 };
 
-export const HeaderContainer = styled.section`
+const HeaderContainer = styled.section`
   width: 100%;
   background-color: #fcfbff;
   height: 4.5rem;

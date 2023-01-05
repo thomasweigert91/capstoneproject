@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import {AddSetButton} from "../Buttons/AddSetButton";
@@ -32,10 +32,6 @@ const WorkoutCard = ({
     });
     setExercises(data);
   }
-
-  useEffect(() => {
-    console.log(exercises);
-  }, [exercises]);
 
   return (
     <>

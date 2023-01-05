@@ -27,7 +27,6 @@ const Exercises = ({exercises, setExercises, bodyPart}) => {
 
   return (
     <ExercisesContainer>
-      <ExercisesHeading>See results</ExercisesHeading>
       <ExercisesDiv>
         {exercises.map((exercise, index) => (
           <ExerciseCard key={index} exercise={exercise} />
@@ -50,7 +49,5 @@ const ExercisesDiv = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-
-const ExercisesHeading = styled.p``;
 
 export default Exercises;

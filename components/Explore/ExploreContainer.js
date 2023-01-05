@@ -14,12 +14,16 @@ const ExploreContainer = () => {
 
   useEffect(() => {
     const fetchExercisesData = async () => {
-      const bodyPartsData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-        exerciseOptions
-      );
+      try {
+        const bodyPartsData = await fetchData(
+          "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
+          exerciseOptions
+        );
 
-      setBodyParts(["all", ...bodyPartsData]);
+        setBodyParts(["all", ...bodyPartsData]);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchExercisesData();
@@ -46,37 +50,37 @@ const ExploreContainer = () => {
   };
 
   return (
-    <Container>
-      <SearchContainer>
-        <SearchBar
-          value={search}
-          onChange={e => setSearch(e.target.value.toLowerCase())}
-          placeholder="Search Exercises"
-          type="text"
-        />
-        <SearchButton onClick={handleSearch}>
-          {" "}
-          <Icon
-            icon="material-symbols:search-rounded"
-            width="36"
-            height="36"
-            title="Home"
-            color="fcfbff"
+    <>
+      <Container>
+        <SearchContainer>
+          <SearchBar
+            value={search}
+            onChange={e => setSearch(e.target.value.toLowerCase())}
+            placeholder="Search Exercises"
+            type="text"
           />
-        </SearchButton>
-      </SearchContainer>
-
-      <HorizontalScroll
-        data={bodyParts}
-        bodyPart={bodyPart}
-        setBodyPart={setBodyPart}
-      />
-      <Exercises
-        setExercises={setExercises}
-        bodyPart={bodyPart}
-        exercises={exercises}
-      />
-    </Container>
+          <SearchButton onClick={handleSearch}>
+            <Icon
+              icon="material-symbols:search-rounded"
+              width="36"
+              height="36"
+              title="Home"
+              color="fcfbff"
+            />
+          </SearchButton>
+        </SearchContainer>
+        <HorizontalScroll
+          data={bodyParts}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
+        />
+        <Exercises
+          setExercises={setExercises}
+          bodyPart={bodyPart}
+          exercises={exercises}
+        />
+      </Container>
+    </>
   );
 };
 
@@ -87,6 +91,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 4.5rem;
 `;
 
 const SearchContainer = styled.div`

@@ -23,7 +23,7 @@ export const Details = ({exerciseDetail}) => {
           </DetailsIconContainer>
           <DetailsIconContainer>
             <DetailsIcon
-              icon="icon-park-outline:dumbbell"
+              icon="ion:body-outline"
               width="36"
               height="36"
               title="Workout"
@@ -33,7 +33,7 @@ export const Details = ({exerciseDetail}) => {
           </DetailsIconContainer>
           <DetailsIconContainer>
             <DetailsIcon
-              icon="icon-park-outline:dumbbell"
+              icon="ion:body-outline"
               width="36"
               height="36"
               title="Workout"

@@ -48,8 +48,8 @@ const ExerciseLink = styled(Link)`
   text-decoration: none;
   color: #211d29;
   text-transform: capitalize;
-  margin: 2rem auto;
-  border-top: 1px solid #8a878e;
+  margin: 1rem auto;
+  border-bottom: 1px solid #8a878e;
   padding: 1rem;
 `;
 
