@@ -31,7 +31,7 @@ export default function Navigation() {
 const NavigationContainer = styled.nav`
   width: 100%;
   background-color: #fcfbff;
-  height: 5rem;
+  height: 4.5rem;
   position: fixed;
   box-shadow: 0px 0px 10px #463f3a;
   bottom: 0;

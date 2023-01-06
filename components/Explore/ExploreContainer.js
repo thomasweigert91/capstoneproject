@@ -56,7 +56,7 @@ const ExploreContainer = () => {
           <SearchBar
             value={search}
             onChange={e => setSearch(e.target.value.toLowerCase())}
-            placeholder="Search Exercises"
+            placeholder="Equipment, muscle, bodypart or name"
             type="text"
           />
           <SearchButton onClick={handleSearch}>
