@@ -49,7 +49,7 @@ const DoneWorkout = ({doneworkout}) => {
 const DoneWorkoutCard = styled.div`
   width: 80%;
   background-color: #fcfbff;
-  border: 1px solid #8a878e;
+  border: 1px solid #c1bec7;
   border-radius: 5px;
   margin-top: 1.5rem;
   display: flex;
@@ -57,6 +57,7 @@ const DoneWorkoutCard = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 1rem 0;
+  box-shadow: 1px 1px 10px #8a878e;
 `;
 
 const DoneWorkoutName = styled.h3`

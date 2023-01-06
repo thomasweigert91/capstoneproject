@@ -41,7 +41,7 @@ const RoutinesCardContainer = styled.div`
   width: 20rem;
   background-color: #fcfbff;
   height: 10rem;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -50,6 +50,7 @@ const RoutinesCardContainer = styled.div`
   margin: 1rem;
   border: 1.5px solid #c1bec7;
   position: relative;
+  box-shadow: 1px 1px 10px #8a878e;
 `;
 
 const RoutineName = styled.h2`

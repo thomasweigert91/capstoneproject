@@ -34,7 +34,7 @@ const CreateExercisesContainer = ({
   return (
     <ExercisesContainer>
       <ExercisesDiv>
-        {exercises.map(exercise => (
+        {exercises?.map(exercise => (
           <CreateExerciseCard
             key={exercise.id}
             exercise={exercise}
