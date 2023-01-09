@@ -10,8 +10,8 @@ const DoneWorkout = ({doneworkout}) => {
   function calculateTotalWeight() {
     let totalWeight = 0;
 
-    doneworkout.exercises.forEach(exercise => {
-      exercise.sets.forEach(set => {
+    doneworkout.exercises?.forEach(exercise => {
+      exercise.sets?.forEach(set => {
         totalWeight += set.weight * set.reps;
       });
     });
