@@ -1,13 +1,6 @@
-# Capstone-Project-Template for Octopodes
+# Trainify - the mobile workout tracker
 
-- Next.js project created with `create-next-app`
-- [Default Styling (with CSS Modules) has been removed](#styling)
-- [Styled Components support added](#styling)
-- [Mongoose connectivity support added](#mongoose-connectivity)
-- [Storybook support added](#storybook)
-- [ESLint config added](#eslint)
-- [React Testing Library & Jest support added](#testing)
-- [Prettier config added](#prettier)
+
 
 ## Getting Started
 
