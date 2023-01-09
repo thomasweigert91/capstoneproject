@@ -19,6 +19,7 @@ This app was developed using React and NextJS. It is optimized for mobile usage,
 - React Hooks
 - React Router
 - uuid
+- ExercisesDB API
 
 ## Set up
 
