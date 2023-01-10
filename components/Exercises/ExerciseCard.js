@@ -18,7 +18,9 @@ const ExerciseCard = ({exercise}) => {
   );
 };
 
-const ExerciseImage = styled.img``;
+const ExerciseImage = styled.img`
+  width: 13rem;
+`;
 
 const TagContainer = styled.div`
   display: flex;
@@ -49,8 +51,14 @@ const ExerciseLink = styled(Link)`
   color: #211d29;
   text-transform: capitalize;
   margin: 1rem auto;
-  border-bottom: 1px solid #8a878e;
+  border: 1px solid #8a878e;
+  border-radius: 5px;
   padding: 1rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export default ExerciseCard;

@@ -68,6 +68,7 @@ const DetailsContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: 1rem auto;
+  padding: 1rem;
 `;
 
 const DetailsIconStack = styled.div`

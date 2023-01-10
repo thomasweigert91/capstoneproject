@@ -57,7 +57,11 @@ const DoneWorkoutCard = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 1rem 0;
-  box-shadow: 1px 1px 10px #8a878e;
+
+  box-shadow: 1.6px 1.8px 1.8px rgba(0, 0, 0, 0.016),
+    4.1px 4.5px 4.6px rgba(0, 0, 0, 0.022),
+    8.3px 9.2px 9.4px rgba(0, 0, 0, 0.028),
+    17.2px 19px 19.3px rgba(0, 0, 0, 0.034), 47px 52px 53px rgba(0, 0, 0, 0.05);
 `;
 
 const DoneWorkoutName = styled.h3`
@@ -101,6 +105,10 @@ const MoreDetailsButton = styled.div`
   padding: 0.75rem;
   border-radius: 5px;
   color: #fcfbff;
+  box-shadow: 0.6px 2.9px 4.6px rgba(0, 0, 0, 0.06),
+    1.8px 8.1px 12.8px rgba(0, 0, 0, 0.036),
+    4.2px 19.6px 30.8px rgba(0, 0, 0, 0.025),
+    14px 65px 102px rgba(0, 0, 0, 0.015);
 `;
 
 export default DoneWorkout;

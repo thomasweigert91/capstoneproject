@@ -8,10 +8,8 @@ export const DoneWokoutCard = ({exercise}) => {
 
   return (
     <Card>
-      <DoneWorkoutHeading>
-        <ExerciseImage src={exercise.gifUrl} />
-        {exercise.name}
-      </DoneWorkoutHeading>
+      <ExerciseImage src={exercise.gifUrl} />
+      <DoneWorkoutHeading>{exercise.name}</DoneWorkoutHeading>
       <MuscEquipContainer>
         <MuscEquip>
           <MuscEquipHeading>Bodypart</MuscEquipHeading>
@@ -36,10 +34,12 @@ const Card = styled.div`
   border: 1px solid #c1bec7;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   margin: 1rem;
   border-radius: 5px;
-  box-shadow: 0px 2px 8px #c1bec7;
+  box-shadow: 4.1px 7.9px 12.8px rgba(0, 0, 0, 0.057),
+    33px 63px 102px rgba(0, 0, 0, 0.11);
   padding: 1rem;
 `;
 
@@ -87,6 +87,6 @@ const MuscEquipDetail = styled.p`
 `;
 
 const ExerciseImage = styled.img`
-  width: 5rem;
+  width: 8rem;
   margin-right: 1rem;
 `;
